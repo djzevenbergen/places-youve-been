@@ -24,7 +24,7 @@ LocationBook.prototype.deletePlace = function(id) {
       }
     }
   }
-  
+  //comment to commit
 }
 
 // Business for places
