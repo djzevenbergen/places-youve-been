@@ -1,3 +1,5 @@
+// location book business logic
+
 function LocationBook() {
   this.places = [];
   this.currentId = 0;
@@ -11,6 +13,16 @@ LocationBook.prototype.addLocation = function(place) {
 LocationBook.prototype.assignId = function() {
   this.currentId += 1;
   return this.currentId;
+}
+
+LocationBook.prototype.deletePlace = function() {
+  for (var i=0; i < this.contacts.length; i++) {
+    if (this.places[i].id == id) {
+      delete this.places[i];
+      
+    }
+  }
+  
 }
 
 // Business for places
@@ -29,12 +41,8 @@ function output(place) {
   var placeTime = place.timeOfYear;
   var placeNotes = place.notes;
   var placeId = place.id;
-  $("#output").after('<div class="head" id="' + placeId + '"><h2>' + placeName + "</h2> " + '<ul class="hidden"> <li>' + placeLandmarks + "</li>" + "<li>" + placeTime + "</li>" + "<li>" + placeNotes + "</li> </ul> </div>");
+  $("#output").after('<div class="head" id="' + placeId + '">' + '<button id= "btn' + placeId + '" type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +'<h2>' + placeName + '</h2> ' + '<ul class="hidden"> <li> Landmarks: ' +  placeLandmarks + "</li>" + "<li> Season Visted: " + placeTime + "</li>" + "<li> Notes on Visit: " + placeNotes + '</li> </ul>  </div>');
 
-}
-
-function toggleOnOff(id) {
- 
 }
 
 // UI logic
@@ -43,18 +51,21 @@ $(document).ready(function() {
   $("#placeForm").submit(function(event){
     event.preventDefault();
     var name = $("#place").val();
-    var landmark = $("#landmarks").val().split(",");
+    var landmark = $("#landmarks").val();
     var timeOfYear = $("#timeOfYear").val();
     var notes = $("#notes").val();
 
-    var newPlace = new Place(name, landmark, timeOfYear, notes);
+    var newPlace = new Place(name, landmark.split(","), timeOfYear, notes);
   
     myPlaces.addLocation(newPlace);
 
     output(newPlace);
     
     console.log(myPlaces.places);
-
+    $("#btn" + newPlace.id).on('click', function() {
+      $("#" + newPlace.id).hide();
+      deletePlace(newPlace.id);
+    });
     $("#" + newPlace.id).on('click', function() {
       $(this).children("ul").toggleClass("hidden");
 
@@ -62,9 +73,6 @@ $(document).ready(function() {
     });
  
   });
-
-
-
 
 });
 
