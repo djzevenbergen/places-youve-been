@@ -28,7 +28,8 @@ function output(place) {
   var placeLandmarks = place.landmarks;
   var placeTime = place.timeOfYear;
   var placeNotes = place.notes;
-  $("#output").append('<div id="head"><h2>' + placeName + "</h2>" + '<ul class="hidden"> <li>' + placeLandmarks + "</li>" + "<li>" + placeTime + "</li>" + "<li>" + placeNotes + "</li> </ul> </div>");
+  var placeId = place.id;
+  $("#output").after('<div id="head"><h2>' + placeName + "</h2> " + '<ul class="hidden"> <li>' + placeLandmarks + "</li>" + "<li>" + placeTime + "</li>" + "<li>" + placeNotes + "</li> </ul> </div>");
 
 }
 
@@ -51,6 +52,7 @@ $(document).ready(function() {
     console.log(myPlaces.places);
 
     $("#head").click(function() {
+      console.log("in:" + this);
       $(this).children("ul").toggleClass("hidden");
     });
  
