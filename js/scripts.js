@@ -29,8 +29,12 @@ function output(place) {
   var placeTime = place.timeOfYear;
   var placeNotes = place.notes;
   var placeId = place.id;
-  $("#output").after('<div id="head"><h2>' + placeName + "</h2> " + '<ul class="hidden"> <li>' + placeLandmarks + "</li>" + "<li>" + placeTime + "</li>" + "<li>" + placeNotes + "</li> </ul> </div>");
+  $("#output").after('<div class="head" id="' + placeId + '"><h2>' + placeName + "</h2> " + '<ul class="hidden"> <li>' + placeLandmarks + "</li>" + "<li>" + placeTime + "</li>" + "<li>" + placeNotes + "</li> </ul> </div>");
 
+}
+
+function toggleOnOff(id) {
+ 
 }
 
 // UI logic
@@ -48,12 +52,13 @@ $(document).ready(function() {
     myPlaces.addLocation(newPlace);
 
     output(newPlace);
-
+    
     console.log(myPlaces.places);
 
-    $("#head").click(function() {
-      console.log("in:" + this);
+    $("#" + newPlace.id).on('click', function() {
       $(this).children("ul").toggleClass("hidden");
+
+     
     });
  
   });
