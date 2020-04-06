@@ -1,3 +1,9 @@
+.jumbotron {
+  background-color: lightblue;
+  color: grey;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
 .hidden {
   display: none;
 }
@@ -5,4 +11,29 @@
 .close {
   float: left;
   margin: 1vh;
+}
+
+.form-group {
+  background-color: lightskyblue;
+  color: darkblue;
+  padding-top: 2vh;
+  padding-bottom: 2vh;
+  padding-left: 2vh;
+  padding-right: 2vh;
+}
+
+.head {
+  background-color: lavenderblush;
+  color: darkred;
+
+}
+
+h2 {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color: darkred;
+}
+
+img {
+  width: 250px;
+  height: auto;
 }
