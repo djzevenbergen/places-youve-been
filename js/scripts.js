@@ -25,3 +25,7 @@ function Place(name, landmarks, timeOfYear, notes) {
 
 // UI logic
 
+
+
+//form ids: place, landmarks, timeOfYear, notes
+
