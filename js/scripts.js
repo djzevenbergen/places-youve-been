@@ -20,5 +20,8 @@ function Place(name, landmarks, timeOfYear, notes) {
   this.landmarks = landmarks;
   this.timeOfYear = timeOfYear;
   this.notes = notes;
+
 }
+
+// UI logic
 
