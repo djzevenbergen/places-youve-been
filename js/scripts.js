@@ -24,7 +24,26 @@ function Place(name, landmarks, timeOfYear, notes) {
 }
 
 // UI logic
+$(document).ready(function() {
+  $("#placeForm").submit(function(event){
+    event.preventDefault();
+    var name = $("#place").val();
+    var landmark = $("#landmarks").val();
+    var timeOfYear = $("#timeOfYear").val();
+    var notes = $("#notes").val();
 
+    var newPlace = new Place(name, landmark, timeOfYear, notes);
+    var myPlaces = new LocationBook();
+    myPlaces.addLocation(newPlace);
+
+    console.log(myPlaces.places);
+
+  })
+
+
+
+
+})
 
 
 //form ids: place, landmarks, timeOfYear, notes
