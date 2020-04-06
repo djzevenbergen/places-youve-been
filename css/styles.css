@@ -36,4 +36,7 @@ h2 {
 img {
   width: 250px;
   height: auto;
+  position: absolute;
+  top: 15px;
+  left: 60vw;
 }

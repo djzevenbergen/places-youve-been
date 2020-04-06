@@ -15,11 +15,13 @@ LocationBook.prototype.assignId = function() {
   return this.currentId;
 }
 
-LocationBook.prototype.deletePlace = function() {
-  for (var i=0; i < this.contacts.length; i++) {
-    if (this.places[i].id == id) {
-      delete this.places[i];
-      
+LocationBook.prototype.deletePlace = function(id) {
+  for (var i=0; i < this.places.length; i++) {
+    if (this.places[i]) { 
+      if (this.places[i].id == id) {
+        delete this.places[i];
+        
+      }
     }
   }
   
@@ -64,7 +66,7 @@ $(document).ready(function() {
     console.log(myPlaces.places);
     $("#btn" + newPlace.id).on('click', function() {
       $("#" + newPlace.id).hide();
-      deletePlace(newPlace.id);
+      myPlaces.deletePlace(newPlace.id);
     });
     $("#" + newPlace.id).on('click', function() {
       $(this).children("ul").toggleClass("hidden");
